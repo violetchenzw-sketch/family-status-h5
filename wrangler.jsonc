@@ -7,5 +7,11 @@
     "directory": "./site",
     "binding": "ASSETS",
     "not_found_handling": "single-page-application"
-  }
+  },
+  "kv_namespaces": [
+    {
+      "binding": "FAMILY_STATUS_KV",
+      "id": "7ac737ae25374ada9aace917d1d2da3a"
+    }
+  ]
 }
