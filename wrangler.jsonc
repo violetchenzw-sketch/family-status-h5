@@ -1,0 +1,17 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "family-status-h5",
+  "main": "worker.js",
+  "compatibility_date": "2026-07-14",
+  "assets": {
+    "directory": "./site",
+    "binding": "ASSETS",
+    "not_found_handling": "single-page-application"
+  },
+  "kv_namespaces": [
+    {
+      "binding": "FAMILY_STATUS_KV",
+      "id": "KV_NAMESPACE_ID_PLACEHOLDER"
+    }
+  ]
+}
