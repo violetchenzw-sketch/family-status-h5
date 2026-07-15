@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#21123f" />
+    <meta name="description" content="把小红书、抖音收藏变成顺路旅行攻略的手机端旅行助手。" />
+    <link rel="manifest" href="./manifest.webmanifest" />
+    <link rel="icon" href="./icon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="./styles.css" />
+    <title>双人漫游簿 · 我们的像素旅行</title>
+  </head>
+  <body>
+    <div class="paper-noise" aria-hidden="true"></div>
+
+    <main class="app-shell">
+      <header class="topbar">
+        <button class="brand" data-scroll="top" aria-label="回到顶部">
+          <span class="brand-mark" aria-hidden="true">♥</span>
+          <span>
+            <b>双人漫游簿</b>
+            <small>COUPLE QUEST</small>
+          </span>
+        </button>
+        <button class="update-pill" id="updatePill" aria-label="查看更新时间">
+          <span class="live-dot"></span>
+          <span id="updateText">今日 10:00 已更新</span>
+        </button>
+      </header>
+
+      <nav class="city-strip" id="cityStrip" aria-label="想去的城市"></nav>
+
+      <section class="hero" id="top">
+        <img class="city-scene" id="cityScene" src="./assets/scene-wuhan.svg" alt="武汉像素城市特色场景" />
+        <div class="hero-shade" aria-hidden="true"></div>
+        <div class="pixel-stars" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+        <div class="hero-copy">
+          <div class="eyebrow"><span>♥</span> 我们的下一站 · <span id="cityProvince">湖北 · 7/31入住 · 8/2退房</span></div>
+          <h1>一起去<br /><span id="heroCity">武汉</span>冒险！</h1>
+          <p id="cityTagline">从江汉路的老建筑走到东湖晚风，把盛夏武汉排成我们的双人主线。</p>
+          <div class="hero-stats" aria-label="收藏概览">
+            <span><b id="savedCount">8</b> 个任务点</span>
+            <i></i>
+            <span><b id="foodCount">4</b> 份美味补给</span>
+          </div>
+        </div>
+        <div class="couple-art">
+          <img id="coupleImage" src="./assets/couple-sprites.svg" alt="男生戴黑色棒球帽穿印花衬衫，女生留黑色长发穿主题色上衣与黑色长靴的像素情侣角色" />
+          <span class="heart-pop">♥</span>
+          <small>PLAYER 1 + PLAYER 2</small>
+        </div>
+        <div class="hero-stamp" aria-hidden="true">
+          <span>WUHAN 07.31</span>
+          <b>双<br />人</b>
+          <small>2026</small>
+        </div>
+        <svg class="hero-doodle" viewBox="0 0 160 90" aria-hidden="true">
+          <path d="M5 68 C36 28, 54 83, 84 47 S124 16, 154 42" />
+          <path d="M135 33 l17 8 -14 11" />
+          <circle cx="37" cy="52" r="4" />
+          <circle cx="85" cy="47" r="4" />
+        </svg>
+      </section>
+
+      <section class="section-block link-import" id="importSection">
+        <div class="section-heading compact">
+          <div>
+            <span class="section-kicker">QUEST 01 · 收集线索</span>
+            <h2>投喂一条旅行情报</h2>
+          </div>
+          <span class="platform-badges" aria-label="支持的平台"><i>小红书</i><i>抖音</i></span>
+        </div>
+        <p class="section-note">自动解锁地点、情侣拍照机位和笔记封面，收进共享背包。</p>
+        <form class="link-form" id="linkForm">
+          <label class="sr-only" for="shareLink">小红书或抖音分享链接</label>
+          <div class="link-field">
+            <span aria-hidden="true">↗</span>
+            <input id="shareLink" type="text" inputmode="url" autocomplete="off" placeholder="粘贴小红书 / 抖音分享链接" />
+            <button class="paste-button" id="pasteButton" type="button">粘贴</button>
+          </div>
+          <button class="primary-button" id="analyzeButton" type="submit">
+            <span>帮我识别</span><span aria-hidden="true">→</span>
+          </button>
+        </form>
+        <div class="recognition-result" id="recognitionResult" hidden></div>
+      </section>
+
+      <section class="section-block planner" id="plannerSection">
+        <div class="section-heading">
+          <div>
+            <span class="section-kicker">QUEST 02 · 设置副本</span>
+            <h2>这次一起玩几天？</h2>
+          </div>
+          <span class="scribble-label">双人组队中</span>
+        </div>
+
+        <div class="planner-grid">
+          <div class="control-card days-control">
+            <label>旅行天数</label>
+            <div class="stepper">
+              <button id="daysMinus" type="button" aria-label="减少一天">−</button>
+              <output id="daysOutput">3 <small>天</small></output>
+              <button id="daysPlus" type="button" aria-label="增加一天">＋</button>
+            </div>
+          </div>
+          <div class="control-card hotel-control">
+            <label for="hotelInput">住宿地点</label>
+            <div class="hotel-field">
+              <span aria-hidden="true">⌂</span>
+              <input id="hotelInput" type="text" value="卡曼时尚民宿（武汉王家湾地铁站店）" />
+            </div>
+            <small id="hotelHint">龙阳大道19号1楼 · 7/31 14:00后入住</small>
+          </div>
+        </div>
+
+        <button class="generate-button" id="generateButton" type="button">
+          <span class="magic-star" aria-hidden="true">✦</span>
+          <span><b>重新排一份顺路攻略</b><small>结合收藏、距离和今日榜单</small></span>
+          <span aria-hidden="true">↗</span>
+        </button>
+      </section>
+
+      <section class="route-section" id="routeSection">
+        <div class="section-heading route-title-row">
+          <div>
+          <span class="section-kicker">QUEST 03 · 今日主线</span>
+            <h2><span id="routeCity">武汉</span>双人冒险</h2>
+          </div>
+          <button class="icon-button" id="sharePlanButton" type="button" aria-label="分享攻略">↗</button>
+        </div>
+
+        <div class="day-tabs" id="dayTabs" role="tablist" aria-label="选择行程日期"></div>
+
+        <article class="route-card">
+          <div class="route-card-top">
+            <div>
+              <span id="dayDate">DAY 1 · 周六</span>
+              <h3 id="dayTheme">江城盛夏慢游线</h3>
+            </div>
+            <span class="weather-chip" id="weatherChip">☀ 28°</span>
+          </div>
+
+          <div class="map-wrap" id="mapWrap">
+            <svg class="route-map" id="routeMap" viewBox="0 0 340 220" role="img" aria-label="当天路线示意图"></svg>
+            <div class="map-note" id="mapNote">少绕路约 31%</div>
+          </div>
+
+          <div class="route-metrics">
+            <span><small>预计路程</small><b id="distanceMetric">8.6 km</b></span>
+            <span><small>游玩地点</small><b id="stopsMetric">4 站</b></span>
+            <span><small>松弛指数</small><b id="paceMetric">刚刚好</b></span>
+          </div>
+
+          <ol class="timeline" id="timeline"></ol>
+
+          <button class="sketch-button" id="sketchButton" type="button">
+            <span aria-hidden="true">✎</span>
+            <span><b>生成情侣像素攻略卡</b><small>保存到相册，解锁当天任务</small></span>
+            <span aria-hidden="true">→</span>
+          </button>
+        </article>
+      </section>
+
+      <section class="section-block discover" id="discoverSection">
+        <div class="section-heading">
+          <div>
+            <span class="section-kicker">QUEST 04 · 隐藏彩蛋</span>
+            <h2>附近还有惊喜</h2>
+          </div>
+          <button class="text-button" id="refreshDiscover" type="button">换一批 ↻</button>
+        </div>
+        <div class="source-line"><span>今日 10:00 汇总</span><i></i><span>热度 × 距离 × 口碑</span></div>
+        <div class="recommend-scroll" id="recommendList"></div>
+      </section>
+
+      <section class="section-block pocket" id="pocketSection">
+        <div class="section-heading">
+          <div>
+            <span class="section-kicker">QUEST 05 · 共享背包</span>
+            <h2>我们想去的地方</h2>
+          </div>
+          <button class="filter-button" id="filterButton" type="button">全部 ⌄</button>
+        </div>
+        <div class="pocket-list" id="pocketList"></div>
+      </section>
+
+      <aside class="automation-card" aria-label="自动更新说明">
+        <span class="automation-icon" aria-hidden="true">10:00</span>
+        <div>
+          <b>每天 10:00，刷新我们的双人任务</b>
+          <p>根据前一天新增的收藏，重新识别、顺路分组，并更新攻略图。</p>
+        </div>
+        <button id="automationToggle" class="toggle is-on" type="button" role="switch" aria-checked="true" aria-label="每日自动更新">
+          <span></span>
+        </button>
+      </aside>
+
+      <footer class="app-footer">
+        <span>双人漫游簿 · LOVE IS AN ADVENTURE</span>
+        <small>榜单与链接识别当前为产品演示数据</small>
+      </footer>
+    </main>
+
+    <nav class="bottom-nav" aria-label="主导航">
+      <button class="is-active" data-target="routeSection"><span>⌁</span><b>路书</b></button>
+      <button data-target="pocketSection"><span>♡</span><b>收藏</b></button>
+      <button class="nav-add" data-target="importSection" aria-label="添加链接"><span>＋</span></button>
+      <button data-target="discoverSection"><span>✦</span><b>发现</b></button>
+      <button data-target="plannerSection"><span>⌂</span><b>行程</b></button>
+    </nav>
+
+    <div class="sheet-backdrop" id="citySheetBackdrop" hidden></div>
+    <section class="bottom-sheet" id="citySheet" role="dialog" aria-modal="true" aria-labelledby="citySheetTitle" hidden>
+      <div class="sheet-handle"></div>
+      <div class="sheet-title-row">
+        <div><span class="section-kicker">想去清单</span><h2 id="citySheetTitle">再加一座城市</h2></div>
+        <button class="sheet-close" data-close-sheet type="button" aria-label="关闭">×</button>
+      </div>
+      <div class="city-options" id="cityOptions"></div>
+    </section>
+
+    <div class="modal-backdrop" id="sketchModal" hidden>
+      <section class="sketch-modal" role="dialog" aria-modal="true" aria-labelledby="sketchTitle">
+        <header>
+          <div><span class="section-kicker">可保存到相册</span><h2 id="sketchTitle">像素冒险卡</h2></div>
+          <button id="closeSketch" type="button" aria-label="关闭">×</button>
+        </header>
+        <div class="canvas-frame"><canvas id="sketchCanvas" width="1080" height="1440"></canvas></div>
+        <div class="modal-actions">
+          <button class="secondary-button" id="regenerateSketch" type="button">换个排版</button>
+          <button class="primary-button" id="downloadSketch" type="button">保存 PNG</button>
+        </div>
+      </section>
+    </div>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+    <script src="./app.js" defer></script>
+  </body>
+</html>

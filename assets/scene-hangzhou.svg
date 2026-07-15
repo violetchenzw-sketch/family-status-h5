@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 330" shape-rendering="crispEdges">
+  <defs><linearGradient id="sky" x2="0" y2="1"><stop stop-color="#174d43"/><stop offset="1" stop-color="#6abf79"/></linearGradient></defs>
+  <path fill="url(#sky)" d="M0 0h520v330H0z"/>
+  <path fill="#d8efb4" d="M420 39h40v40h-40z" opacity=".9"/>
+  <!-- distant hills -->
+  <path fill="#2f7657" d="M0 159l60-46 49 38 62-62 61 61 68-43 72 49 60-61 88 69v74H0z"/>
+  <path fill="#235b49" d="M0 181l89-56 80 61 82-45 83 54 91-65 95 57v61H0z"/>
+  <!-- lake -->
+  <path fill="#66aaa0" d="M0 211h520v119H0z"/><path fill="#b7e4c4" d="M0 229h520v8H0zM46 270h170v7H46zM302 252h148v6H302z" opacity=".7"/>
+  <!-- Leifeng Pagoda -->
+  <path fill="#183c34" d="M329 99h54v111h-54zM338 79h36v20h-36zM347 59h18v20h-18z"/>
+  <path fill="#c6d884" d="M317 96h78v8h-78zM327 76h58v8h-58zM338 56h36v7h-36zM321 122h70v7h-70zM321 149h70v7h-70zM321 177h70v7h-70z"/>
+  <path fill="#e9f0c0" d="M340 109h12v12h-12zM361 109h12v12h-12zM340 135h12v12h-12zM361 135h12v12h-12z"/>
+  <!-- willow -->
+  <path fill="#173b31" d="M76 37h14v190H76zM48 54h70v17H48z"/>
+  <path fill="none" stroke="#77c97c" stroke-width="8" d="M54 66c-8 55 3 84-18 132M72 66c-2 58 8 91-5 142M96 66c9 48 4 87 22 131M112 66c20 51 13 91 31 123"/>
+  <path fill="#fff5d6" d="M222 53h5v5h-5zM273 74h6v6h-6zM470 103h5v5h-5z"/>
+</svg>

@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 230" shape-rendering="crispEdges">
+  <!-- ground + neon particles -->
+  <path fill="#071d3a" d="M26 204h268v10H26zM54 214h212v7H54z"/>
+  <path fill="#205f8c" d="M44 194h232v10H44z"/>
+  <path fill="#78c9e9" d="M70 187h180v7H70z"/>
+  <path fill="#ffd166" d="M36 35h7v7h-7zM280 54h7v7h-7zM259 23h5v5h-5zM66 19h5v5h-5z"/>
+  <path fill="#f06bb5" d="M151 37h8v8h-8zM143 29h8v8h-8zM159 29h8v8h-8zM151 21h8v8h-8z"/>
+  <path fill="#65e0d5" d="M25 84h5v5h-5zM291 110h5v5h-5z"/>
+
+  <!-- PLAYER 1: black cap, purple printed shirt, white tee, ripped jeans -->
+  <!-- cap and hair -->
+  <path fill="#0e0b18" d="M65 43h46v7H65zM58 50h60v9H58zM72 36h35v7H72zM79 31h23v5H79z"/>
+  <path fill="#2a2636" d="M72 36h35v7H72zM79 31h23v5H79zM65 43h46v4H65z"/>
+  <path fill="#397fb7" d="M92 37h11v4H92z"/>
+  <path fill="#171020" d="M62 58h14v29H62zM106 55h12v31h-12zM69 52h43v12H69z"/>
+  <!-- face -->
+  <path fill="#efb393" d="M73 57h36v38H73zM66 68h7v15h-7zM109 68h7v15h-7z"/>
+  <path fill="#d98e78" d="M73 88h36v7H73z"/>
+  <path fill="#21142d" d="M77 70h7v6h-7zM99 70h7v6h-7z"/>
+  <path fill="#b75f68" d="M87 84h12v4H87z"/>
+  <path fill="#171020" d="M73 57h9v7h-9zM101 57h8v9h-8z"/>
+  <!-- neck and white tee -->
+  <path fill="#efb393" d="M83 94h18v12H83z"/>
+  <path fill="#fff8f0" d="M80 101h25v60H80zM74 109h37v49H74z"/>
+  <path fill="#d9d8e6" d="M80 151h25v10H80zM101 108h5v43h-5z"/>
+  <!-- open purple baroque shirt -->
+  <path fill="#2f6fa4" d="M54 103h29v59H54zM102 103h31v59h-31zM47 110h14v43H47zM126 110h14v43h-14z"/>
+  <path fill="#12385d" d="M54 103h10v59H54zM123 103h10v59h-10zM65 103h18v11H65zM102 103h20v11h-20z"/>
+  <path fill="#79b8dd" d="M61 112h8v8h-8zM72 126h8v8h-8zM58 142h10v8H58zM111 115h8v8h-8zM105 135h10v8h-10zM119 149h7v7h-7z"/>
+  <path fill="#ffd166" d="M62 108h5v5h-5zM68 113h5v5h-5zM74 118h5v5h-5zM57 132h6v6h-6zM64 137h6v6h-6zM111 107h6v6h-6zM117 112h6v6h-6zM107 126h6v6h-6zM115 132h6v6h-6zM124 140h5v5h-5z"/>
+  <path fill="#d9efff" d="M69 118h7v5h-7zM58 126h7v5h-7zM113 121h7v5h-7zM105 145h7v5h-7z"/>
+  <!-- arms and holding hand -->
+  <path fill="#efb393" d="M45 142h12v35H45zM52 171h17v10H52zM132 146h11v27h-11zM138 168h13v12h-13z"/>
+  <path fill="#d98e78" d="M52 174h17v7H52zM138 173h13v7h-13z"/>
+  <!-- jeans -->
+  <path fill="#8fb7dc" d="M68 160h24v42H68zM94 160h25v42H94zM66 195h24v11H66zM96 195h25v11H96z"/>
+  <path fill="#6794bf" d="M68 160h8v42H68zM111 160h8v42h-8zM91 163h6v39h-6z"/>
+  <path fill="#f0c1b0" d="M72 173h15v6H72zM101 184h15v7h-15zM73 194h14v6H73z"/>
+  <path fill="#e6eef7" d="M69 170h19v3H69zM70 179h17v3H70zM99 181h19v3H99zM100 191h17v3h-17z"/>
+  <!-- canvas shoes -->
+  <path fill="#111019" d="M60 201h31v12H60zM94 201h34v12H94z"/>
+  <path fill="#fffaf4" d="M60 210h34v7H60zM94 210h38v7H94zM65 203h17v4H65zM101 203h18v4h-18z"/>
+  <path fill="#8e8c9a" d="M68 204h4v4h-4zM76 204h4v4h-4zM104 204h4v4h-4zM112 204h4v4h-4z"/>
+
+  <!-- PLAYER 2: long black hair, sheer purple top, black mini skirt and boots -->
+  <!-- long hair -->
+  <path fill="#0c0913" d="M183 39h44v7h-44zM175 46h60v70h-60zM169 67h14v89h-14zM227 65h15v92h-15z"/>
+  <path fill="#2a1739" d="M183 39h44v7h-44zM175 46h9v64h-9zM227 49h8v68h-8zM181 46h9v9h-9z"/>
+  <path fill="#397fb7" d="M179 52h4v61h-4zM229 58h4v68h-4z"/>
+  <!-- face -->
+  <path fill="#f4b7a2" d="M184 49h42v46h-42zM178 66h6v17h-6zM226 66h7v17h-7z"/>
+  <path fill="#e49a8c" d="M184 88h42v7h-42z"/>
+  <path fill="#27152f" d="M189 67h8v7h-8zM213 67h8v7h-8z"/>
+  <path fill="#fff8ff" d="M190 67h3v3h-3zM214 67h3v3h-3z"/>
+  <path fill="#d64f73" d="M199 83h13v5h-13z"/>
+  <path fill="#0c0913" d="M184 49h12v8h-12zM216 49h10v10h-10z"/>
+  <!-- earrings, choker, neck -->
+  <path fill="#d9d7e7" d="M178 77h4v12h-4zM229 77h4v12h-4z"/>
+  <path fill="#f4b7a2" d="M196 94h19v10h-19z"/>
+  <path fill="#111019" d="M193 99h25v7h-25z"/>
+  <path fill="#78c9e9" d="M203 100h5v5h-5z"/>
+  <!-- sheer purple crop top -->
+  <path fill="#5d9bc9" d="M177 105h57v50h-57zM166 111h15v42h-15zM231 111h16v42h-16z" opacity=".9"/>
+  <path fill="#397fb7" d="M177 105h11v50h-11zM223 105h11v50h-11zM166 111h8v42h-8zM239 111h8v42h-8z"/>
+  <path fill="#153b62" d="M188 115h36v38h-36zM192 109h6v12h-6zM216 109h6v12h-6z"/>
+  <path fill="#0d2542" d="M191 121h9v8h-9zM208 116h9v8h-9zM201 132h10v8h-10zM214 140h8v8h-8z"/>
+  <path fill="#8bc8e5" d="M183 110h8v7h-8zM225 108h7v8h-7zM173 127h7v8h-7zM234 130h8v8h-8z"/>
+  <path fill="#f4b7a2" d="M164 148h12v32h-12zM241 148h12v35h-12zM151 169h15v12h-15z"/>
+  <path fill="#e49a8c" d="M151 175h15v6h-15zM241 177h12v6h-12z"/>
+  <!-- glossy black skirt -->
+  <path fill="#0b0911" d="M181 153h50v42h-50zM176 188h60v10h-60z"/>
+  <path fill="#262130" d="M181 153h50v8h-50zM187 163h7v27h-7zM220 160h7v30h-7z"/>
+  <path fill="#3f79aa" d="M205 155h4v37h-4z"/>
+  <path fill="#f2eaff" d="M188 164h4v18h-4zM221 164h4v14h-4z" opacity=".65"/>
+  <!-- legs -->
+  <path fill="#f4b7a2" d="M184 198h19v12h-19zM213 198h18v12h-18z"/>
+  <!-- knee boots -->
+  <path fill="#0b0911" d="M177 193h25v22h-25zM211 193h27v22h-27zM172 210h31v9h-31zM211 210h35v9h-35z"/>
+  <path fill="#173451" d="M181 196h6v16h-6zM216 196h6v16h-6z"/>
+  <path fill="#6199c4" d="M177 193h25v4h-25zM211 193h27v4h-27z"/>
+  <path fill="#f4efff" d="M174 216h30v4h-30zM212 216h36v4h-36z"/>
+
+  <!-- joined hands and little love sparkle -->
+  <path fill="#efb393" d="M146 171h10v12h-10z"/>
+  <path fill="#f4b7a2" d="M156 171h10v12h-10z"/>
+  <path fill="#fff1ff" d="M153 157h6v6h-6zM147 151h6v6h-6zM159 151h6v6h-6zM153 145h6v6h-6z"/>
+</svg>

@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 330" shape-rendering="crispEdges">
+  <defs><linearGradient id="sky" x2="0" y2="1"><stop stop-color="#5d0d1c"/><stop offset="1" stop-color="#e64845"/></linearGradient></defs>
+  <path fill="url(#sky)" d="M0 0h520v330H0z"/>
+  <path fill="#f6c85f" d="M424 42h40v40h-40z"/><path fill="#ffd978" d="M414 52h60v20h-60z"/>
+  <path fill="#8e1723" d="M0 213h520v117H0z"/>
+  <!-- Tiananmen -->
+  <path fill="#7a101a" d="M92 167h336v98H92z"/>
+  <path fill="#a41923" d="M121 137h278v34H121z"/>
+  <path fill="#f0b642" d="M102 157h316v14H102zM134 128h252v13H134z"/>
+  <path fill="#5e0b15" d="M76 165h368v10H76zM108 135h304v10H108z"/>
+  <path fill="#efc86b" d="M124 181h38v34h-38zM180 181h38v34h-38zM302 181h38v34h-38zM358 181h38v34h-38z"/>
+  <path fill="#3c0911" d="M234 181h52v84h-52z"/>
+  <path fill="#f5d57d" d="M247 192h26v32h-26z"/>
+  <path fill="#c92c31" d="M117 223h95v42h-95zM308 223h95v42h-95z"/>
+  <path fill="#ffd166" d="M254 104h12v26h-12zM248 98h24v7h-24z"/>
+  <path fill="#f3dfb0" d="M38 242h444v12H38zM0 276h520v54H0z"/>
+  <path fill="#d6a94a" d="M0 281h520v7H0z"/>
+  <path fill="#fff3db" d="M54 48h5v5h-5zM112 75h6v6h-6zM354 52h5v5h-5z"/>
+</svg>

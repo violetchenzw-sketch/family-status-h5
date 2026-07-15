@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 330" shape-rendering="crispEdges">
+  <defs><linearGradient id="sky" x2="0" y2="1"><stop stop-color="#21113f"/><stop offset="1" stop-color="#7b3fc4"/></linearGradient></defs>
+  <path fill="url(#sky)" d="M0 0h520v330H0z"/>
+  <path fill="#f3c85f" d="M430 42h28v28h-28zM423 49h42v14h-42z" opacity=".9"/>
+  <path fill="#fff1ff" d="M42 42h5v5h-5zM103 77h6v6h-6zM360 44h5v5h-5zM477 95h4v4h-4z"/>
+  <path fill="#35205c" d="M0 216h520v114H0z"/>
+  <!-- Yangtze river -->
+  <path fill="#6349ad" d="M0 242h520v88H0z"/><path fill="#9b75e8" d="M0 255h520v9H0zM74 288h151v7H74zM310 276h130v6H310z" opacity=".55"/>
+  <!-- bridge -->
+  <path fill="#241438" d="M0 214h520v10H0zM44 205h432v9H44z"/>
+  <path fill="#b98cf4" d="M50 198h8v50h-8zM462 198h8v50h-8zM56 201h406v4H56z"/>
+  <path fill="none" stroke="#b98cf4" stroke-width="3" d="M58 201c82 53 322 53 404 0"/>
+  <!-- Yellow Crane Tower silhouette -->
+  <path fill="#1b102d" d="M287 122h74v92h-74zM299 102h50v20h-50zM307 84h34v18h-34zM319 67h10v17h-10z"/>
+  <path fill="#f06bb5" d="M276 119h96v8h-96zM288 99h72v8h-72zM299 81h50v7h-50z"/>
+  <path fill="#ffd166" d="M294 132h10v13h-10zM316 132h16v13h-16zM344 132h10v13h-10zM294 157h10v13h-10zM316 157h16v13h-16zM344 157h10v13h-10z"/>
+  <!-- skyline -->
+  <path fill="#2b1949" d="M0 170h42v46H0zM48 153h35v63H48zM90 178h28v38H90zM124 143h46v73h-46zM177 164h32v52h-32zM388 154h43v62h-43zM438 170h34v46h-34zM480 138h40v78h-40z"/>
+  <path fill="#65e0d5" d="M56 165h6v7h-6zM70 165h6v7h-6zM135 157h7v8h-7zM151 157h7v8h-7zM398 166h7v8h-7zM414 166h7v8h-7zM492 151h7v8h-7z"/>
+</svg>

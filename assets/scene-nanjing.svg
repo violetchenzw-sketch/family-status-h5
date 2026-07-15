@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 330" shape-rendering="crispEdges">
+  <defs><linearGradient id="sky" x2="0" y2="1"><stop stop-color="#0c2d5d"/><stop offset="1" stop-color="#398ac4"/></linearGradient></defs>
+  <path fill="url(#sky)" d="M0 0h520v330H0z"/>
+  <path fill="#d8efff" d="M427 39h35v35h-35z" opacity=".9"/>
+  <path fill="#173d69" d="M0 164l69-59 64 54 70-76 64 72 77-48 78 64 58-45 40 34v94H0z"/>
+  <!-- city wall and gate -->
+  <path fill="#244a69" d="M66 150h388v107H66z"/>
+  <path fill="#37678a" d="M46 137h428v20H46z"/>
+  <path fill="#173148" d="M91 176h338v81H91z"/>
+  <path fill="#254d69" d="M107 188h306v69H107z"/>
+  <path fill="#0e2438" d="M214 190h92v67h-92z"/>
+  <path fill="#8bc3e5" d="M225 202h70v55h-70z" opacity=".42"/>
+  <path fill="#9bc7dc" d="M72 153h18v15H72zM111 153h18v15h-18zM150 153h18v15h-18zM352 153h18v15h-18zM391 153h18v15h-18zM430 153h18v15h-18z"/>
+  <!-- Qinhuai water -->
+  <path fill="#176a91" d="M0 257h520v73H0z"/><path fill="#6bc4e8" d="M0 270h520v8H0zM76 301h150v6H76zM309 289h130v6H309z" opacity=".65"/>
+  <!-- lanterns -->
+  <path fill="#ffcf6b" d="M37 194h18v22H37zM465 192h18v22h-18z"/><path fill="#f06f79" d="M34 199h24v12H34zM462 197h24v12h-24z"/>
+  <path fill="#dcefff" d="M45 50h5v5h-5zM113 76h6v6h-6zM364 52h5v5h-5zM488 91h4v4h-4z"/>
+</svg>
