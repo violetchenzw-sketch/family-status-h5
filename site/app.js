@@ -1,11 +1,17 @@
 const config = window.FAMILY_APP_CONFIG || {};
 
 const STATUS_CATALOG = [
-  { id: "safe", label: "一切都好", shortLabel: "今天挺好的", emoji: "🏮" },
-  { id: "busy", label: "今天很忙", shortLabel: "今天很忙", emoji: "💼" },
+  { id: "safe", label: "一切都好", shortLabel: "一切都好", emoji: "🏮" },
+  { id: "work_way", label: "上班路上", shortLabel: "正在上班路上", emoji: "🚇" },
+  { id: "working", label: "正在上班", shortLabel: "正在上班", emoji: "💻" },
+  { id: "off_work_way", label: "下班路上", shortLabel: "正在下班路上", emoji: "🚶" },
   { id: "home", label: "已经到家", shortLabel: "已经到家", emoji: "🏠" },
-  { id: "rest", label: "准备休息", shortLabel: "准备休息", emoji: "🌙" },
-  { id: "meal", label: "吃完饭了", shortLabel: "吃完饭了", emoji: "🍚" },
+  { id: "meal", label: "刚吃完饭", shortLabel: "刚吃完饭", emoji: "🍚" },
+  { id: "busy", label: "正在忙，晚点回", shortLabel: "正在忙，晚点回复", emoji: "💼" },
+  { id: "rest", label: "准备休息", shortLabel: "准备休息", emoji: "🌙" }
+];
+
+const LEGACY_STATUSES = [
   { id: "road", label: "正在路上", shortLabel: "正在路上", emoji: "🚇" }
 ];
 
@@ -14,10 +20,15 @@ const REPLY_PRESETS = {
   call: "准奏！今晚免除夺命连环 Call ☎️"
 };
 
-const statusById = Object.fromEntries(STATUS_CATALOG.map((status) => [status.id, status]));
+const statusById = Object.fromEntries([...STATUS_CATALOG, ...LEGACY_STATUSES].map((status) => [status.id, status]));
 const members = Array.isArray(config.members) ? config.members : [];
 const memberById = Object.fromEntries(members.map((member) => [member.id, member]));
 const ownerPersonId = config.ownerPersonId || "me";
+const apiBase = String(config.apiBase || "").replace(/\/$/, "");
+
+function apiUrl(path) {
+  return `${apiBase}${path}`;
+}
 
 const elements = {
   siteName: document.querySelector("#site-name"),
@@ -35,6 +46,10 @@ const elements = {
   sheet: document.querySelector("#edit-sheet"),
   memberPicker: document.querySelector("#member-picker"),
   sheetStatusGrid: document.querySelector("#sheet-status-grid"),
+  statusNoteField: document.querySelector("#status-note-field"),
+  statusNote: document.querySelector("#status-note"),
+  statusNoteCount: document.querySelector("#status-note-count"),
+  editTitle: document.querySelector("#edit-title"),
   form: document.querySelector("#status-form"),
   code: document.querySelector("#family-code"),
   submit: document.querySelector("#submit-status"),
@@ -136,6 +151,8 @@ function renderPeople() {
     const personState = state?.people?.[member.id] || { statusId: "safe", updatedAt: new Date().toISOString() };
     const status = getStatus(personState.statusId);
     const featured = member.featured ? " featured" : "";
+    const note = String(personState.note || "").trim();
+    const noteHtml = note ? `<p class="person-note">“${escapeHtml(note)}”</p>` : "";
 
     return `
       <article class="person-card${featured}">
@@ -144,6 +161,7 @@ function renderPeople() {
           <h3 class="person-name">${escapeHtml(member.name)}</h3>
         </div>
         <p class="person-status"><span class="status-dot" aria-hidden="true"></span>${escapeHtml(status.shortLabel)}</p>
+        ${noteHtml}
         <p class="person-time">${escapeHtml(formatRelative(personState.updatedAt))} · ${escapeHtml(formatClock(personState.updatedAt))}</p>
         <span class="person-emoji" aria-hidden="true">${status.emoji}</span>
       </article>
@@ -175,6 +193,12 @@ function renderMemberPicker() {
   `).join("");
 }
 
+function updateStatusNoteField() {
+  const isOwner = selectedPersonId === ownerPersonId;
+  elements.statusNoteField.hidden = !isOwner;
+  elements.editTitle.textContent = isOwner ? "更新我的近况" : `更新${getMember(selectedPersonId).name}的近况`;
+}
+
 function renderActivity() {
   const activities = Array.isArray(state?.activity) ? state.activity.slice(0, 8) : [];
   elements.activityCount.textContent = activities.length ? `最近 ${activities.length} 条` : "";
@@ -187,11 +211,14 @@ function renderActivity() {
   elements.activityList.innerHTML = activities.map((item) => {
     const member = getMember(item.personId);
     const status = getStatus(item.statusId);
+    const note = String(item.note || "").trim();
+    const noteHtml = note ? `<p class="activity-note">“${escapeHtml(note)}”</p>` : "";
     return `
       <div class="activity-row">
         <div class="activity-icon" aria-hidden="true">${status.emoji}</div>
         <div class="activity-main">
           <p class="activity-title">${escapeHtml(member.name)} · ${escapeHtml(status.shortLabel)}</p>
+          ${noteHtml}
           <p class="activity-subtitle">${escapeHtml(formatDay(item.updatedAt))}打卡</p>
         </div>
         <time class="activity-clock" datetime="${escapeHtml(item.updatedAt)}">${escapeHtml(formatClock(item.updatedAt))}</time>
@@ -230,7 +257,9 @@ function renderAll() {
 
 function currentOwnerStatusLabel() {
   const ownerState = state?.people?.[ownerPersonId];
-  return getStatus(ownerState?.statusId || "safe").shortLabel;
+  const statusLabel = getStatus(ownerState?.statusId || "safe").shortLabel;
+  const note = String(ownerState?.note || "").trim();
+  return note ? `${statusLabel}：${note}` : statusLabel;
 }
 
 function setReplyPerson(personId) {
@@ -262,10 +291,11 @@ async function sendFamilyReply({ presetId = "", message = "" } = {}) {
     return false;
   }
 
-  const response = await fetch("/api/reply", {
+  const response = await fetch(apiUrl("/api/reply"), {
     method: "POST",
     headers: { "content-type": "application/json", accept: "application/json" },
     body: JSON.stringify({
+      action: "reply",
       fromPersonId: selectedReplyPersonId,
       presetId,
       message,
@@ -309,7 +339,7 @@ async function loadState({ quiet = false } = {}) {
   if (!quiet) updateSyncLine("loading", "正在看看大家的近况…");
 
   try {
-    const response = await fetch("/api/status", {
+    const response = await fetch(apiUrl("/api/status"), {
       headers: { accept: "application/json" },
       cache: "no-store"
     });
@@ -324,15 +354,17 @@ async function loadState({ quiet = false } = {}) {
   renderAll();
 }
 
-function openEditor({ personId = ownerPersonId, statusId = "safe" } = {}) {
+function openEditor({ personId = ownerPersonId, statusId = "safe", note = "" } = {}) {
   selectedPersonId = personId;
   selectedStatusId = statusId;
+  elements.statusNote.value = personId === ownerPersonId ? String(note || "") : "";
+  elements.statusNoteCount.textContent = `${elements.statusNote.value.length}/60`;
   renderMemberPicker();
   renderStatusOptions();
+  updateStatusNoteField();
   elements.sheet.hidden = false;
   elements.backdrop.hidden = false;
   document.body.classList.add("sheet-open");
-  window.setTimeout(() => elements.code.focus(), 160);
 }
 
 function closeEditor() {
@@ -351,17 +383,17 @@ function showToast(message) {
   }, 2600);
 }
 
-function applyLocalUpdate(personId, statusId) {
+function applyLocalUpdate(personId, statusId, note = "") {
   const updatedAt = new Date().toISOString();
   const current = state || getLocalState();
   const nextState = {
     ...current,
     people: {
       ...current.people,
-      [personId]: { statusId, updatedAt }
+      [personId]: { statusId, note, updatedAt }
     },
     activity: [
-      { personId, statusId, updatedAt },
+      { personId, statusId, note, updatedAt },
       ...(current.activity || [])
     ].slice(0, 20)
   };
@@ -370,23 +402,23 @@ function applyLocalUpdate(personId, statusId) {
   return nextState;
 }
 
-async function submitStatus({ personId, statusId, code }) {
+async function submitStatus({ personId, statusId, note, code }) {
   if (storageMode === "local") {
-    if (String(code) !== "5200") {
+    if (String(code) !== "520520") {
       throw new Error("家庭口令不对，再试一次");
     }
-    applyLocalUpdate(personId, statusId);
+    applyLocalUpdate(personId, statusId, note);
     renderAll();
     return;
   }
 
-  const response = await fetch("/api/status", {
+  const response = await fetch(apiUrl("/api/status"), {
     method: "POST",
     headers: {
       "content-type": "application/json",
       accept: "application/json"
     },
-    body: JSON.stringify({ personId, statusId, code })
+    body: JSON.stringify({ personId, statusId, note, code })
   });
 
   const body = await response.json().catch(() => ({}));
@@ -460,6 +492,13 @@ elements.memberPicker.addEventListener("click", (event) => {
   if (!button) return;
   selectedPersonId = button.dataset.personId;
   renderMemberPicker();
+  updateStatusNoteField();
+});
+
+elements.statusNote.addEventListener("input", () => {
+  const oneLine = elements.statusNote.value.replace(/[\r\n]+/g, " ");
+  if (oneLine !== elements.statusNote.value) elements.statusNote.value = oneLine;
+  elements.statusNoteCount.textContent = `${elements.statusNote.value.length}/60`;
 });
 
 elements.sheetStatusGrid.addEventListener("click", (event) => {
@@ -472,6 +511,7 @@ elements.sheetStatusGrid.addEventListener("click", (event) => {
 elements.form.addEventListener("submit", async (event) => {
   event.preventDefault();
   const code = elements.code.value.trim();
+  const note = selectedPersonId === ownerPersonId ? elements.statusNote.value.trim() : "";
   if (!code) {
     showToast("先输入家庭口令");
     return;
@@ -481,7 +521,7 @@ elements.form.addEventListener("submit", async (event) => {
   elements.submit.textContent = "正在给家里亮灯…";
 
   try {
-    await submitStatus({ personId: selectedPersonId, statusId: selectedStatusId, code });
+    await submitStatus({ personId: selectedPersonId, statusId: selectedStatusId, note, code });
     const member = getMember(selectedPersonId);
     const status = getStatus(selectedStatusId);
     closeEditor();

@@ -11,7 +11,7 @@
     <meta property="og:type" content="website" />
     <link rel="manifest" href="./manifest.webmanifest" />
     <link rel="icon" href="./assets/app-icon.svg" type="image/svg+xml" />
-    <link rel="stylesheet" href="./styles.css" />
+    <link rel="stylesheet" href="./styles.css?v=20260715-1" />
     <title>家里亮着灯</title>
   </head>
   <body>
@@ -167,6 +167,15 @@
           <div class="sheet-status-grid" id="sheet-status-grid"></div>
         </fieldset>
 
+        <label class="status-note-field" id="status-note-field">
+          <span class="status-note-heading">
+            <strong>再跟爸妈说一句 <em>选填</em></strong>
+            <small id="status-note-count">0/60</small>
+          </span>
+          <textarea id="status-note" name="note" maxlength="60" rows="2" enterkeyhint="done" placeholder="例如：今晚有点加班，预计十点前到家"></textarea>
+          <small>这句话会显示在“我”的状态下面，最多 60 个字。</small>
+        </label>
+
         <label class="code-field">
           <span>家庭口令</span>
           <input id="family-code" name="code" type="password" inputmode="numeric" autocomplete="current-password" placeholder="请输入家庭口令" required />
@@ -181,7 +190,7 @@
 
     <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
 
-    <script src="./config.js"></script>
-    <script src="./app.js" defer></script>
+    <script src="./config.js?v=20260715-1"></script>
+    <script src="./app.js?v=20260715-1" defer></script>
   </body>
 </html>

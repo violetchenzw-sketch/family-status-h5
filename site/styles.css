@@ -43,7 +43,8 @@ body {
 }
 
 button,
-input {
+input,
+textarea {
   font: inherit;
 }
 
@@ -53,7 +54,8 @@ button {
 }
 
 button:focus-visible,
-input:focus-visible {
+input:focus-visible,
+textarea:focus-visible {
   outline: 3px solid rgba(20, 122, 91, 0.28);
   outline-offset: 3px;
 }
@@ -339,6 +341,21 @@ main {
   line-height: 1.5;
 }
 
+.person-note {
+  position: relative;
+  z-index: 1;
+  display: -webkit-box;
+  max-width: calc(100% - 74px);
+  overflow: hidden;
+  margin: 9px 0 0 17px;
+  color: #3f5c4e;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.55;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
 .featured .person-status {
   margin-top: 24px;
   font-size: 22px;
@@ -346,6 +363,12 @@ main {
 
 .featured .person-time {
   font-size: 15px;
+}
+
+.featured .person-note {
+  max-width: calc(100% - 100px);
+  color: #315b49;
+  font-size: 16px;
 }
 
 .person-emoji {
@@ -699,6 +722,7 @@ main {
   align-items: center;
   gap: 14px;
   min-height: 96px;
+  padding: 14px 0;
   border-bottom: 1px solid var(--line);
 }
 
@@ -730,6 +754,18 @@ main {
   margin: 6px 0 0;
   color: var(--muted);
   font-size: 12px;
+}
+
+.activity-note {
+  display: -webkit-box;
+  overflow: hidden;
+  margin: 5px 0 0;
+  color: #3f5c4e;
+  font-size: 12px;
+  font-weight: 650;
+  line-height: 1.45;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
 }
 
 .activity-clock {
@@ -817,12 +853,71 @@ fieldset {
 }
 
 legend,
-.code-field > span {
+.code-field > span,
+.status-note-heading {
   display: block;
   margin-bottom: 11px;
   color: #4f4942;
   font-size: 14px;
   font-weight: 800;
+}
+
+.status-note-field {
+  display: block;
+  margin: -2px 0 20px;
+  padding: 15px;
+  border: 1px solid rgba(20, 122, 91, 0.14);
+  border-radius: 20px;
+  background: rgba(220, 238, 229, 0.46);
+}
+
+.status-note-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.status-note-heading strong {
+  font-size: 14px;
+}
+
+.status-note-heading em {
+  margin-left: 5px;
+  color: var(--muted);
+  font-size: 11px;
+  font-style: normal;
+  font-weight: 650;
+}
+
+.status-note-heading small {
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 650;
+}
+
+.status-note-field textarea {
+  display: block;
+  width: 100%;
+  min-height: 76px;
+  resize: none;
+  padding: 13px 14px;
+  border: 1px solid rgba(67, 56, 44, 0.14);
+  border-radius: 15px;
+  color: var(--ink);
+  background: #fffdf9;
+  font-size: 16px;
+  line-height: 1.5;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.status-note-field > small {
+  display: block;
+  margin: 8px 2px 0;
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1.5;
 }
 
 .member-picker {
@@ -1026,6 +1121,17 @@ body.sheet-open {
   .person-time {
     margin-left: 15px;
     font-size: 12px;
+  }
+
+  .person-note {
+    max-width: calc(100% - 55px);
+    margin-left: 15px;
+    font-size: 12px;
+  }
+
+  .featured .person-note {
+    max-width: calc(100% - 80px);
+    font-size: 14px;
   }
 
   .person-emoji {
